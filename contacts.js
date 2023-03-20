@@ -67,22 +67,10 @@ async function removeContact(contactId) {
   }
 }
 
+
 async function addContact(name, email, phone) {
   try {
     const contacts = await parsedContacts();
-
-    if (
-      contacts.find(
-        contact => contact.name.toLowerCase() === name.toLowerCase(),
-      )
-    )
-      return console.warn('This name already exists!');
-
-    if (contacts.find(contact => contact.email === email))
-      return console.warn('This email already exists!');
-
-    if (contacts.find(contact => contact.phone === phone))
-      return console.warn('This phone already exists!');
 
     const newContact = { id: shortid.generate(), name, email, phone };
     const newContacts = [...contacts, newContact];
